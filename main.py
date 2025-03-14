@@ -130,7 +130,7 @@ class AppLogic:
         # Нормализация или увеличение громкости
         if NORMALIZING:
             max_val = np.max(np.abs(audio_data))
-            print("Коэффициент нормализации:", 32767 / max_val)
+            # print("Коэффициент нормализации:", 32767 / max_val)
             audio_data = (audio_data / max_val * 32767).astype(np.int16)
         else:
             audio_data = (audio_data * VOLUME_BOOST).astype(np.int16)

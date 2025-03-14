@@ -1,0 +1,5 @@
+audioop-lts==0.2.1
+numpy==2.2.3
+psutil==7.0.0
+PyAudio==0.2.14
+pydub==0.25.1
