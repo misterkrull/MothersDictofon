@@ -46,6 +46,7 @@ class InputingFilename:
         )
         self._input_field.pack(pady=3)
         self._input_field.focus_set()
+        self._input_field.bind("<Key>", self._validate_input)
 
         # фрейм для кнопок
         button_frame = tk.Frame(self._dialog_window)
@@ -60,9 +61,20 @@ class InputingFilename:
             button_frame, text="Отмена", command=self._on_cancel, width=12, font=("Segoe UI", 10)
         )
         self._cancel_button.pack(side=tk.LEFT, padx=2, pady=0)
-
+    
+    def _validate_input(self, event: tk.Event | None = None) -> None | str:
+        """Блокирует ввод запрещённых символов."""
+        
+        # пропускаем управляющие клавиши -- иначе он их блокирует
+        if event.keysym in ["Left", "Right", "Up", "Down", "BackSpace", "Delete"]:
+            return
+        
+        # блокируем запрещённые символы
+        if event.char in "/\\:*?\"<>|":
+            return "break"  # Отменяет ввод символа
+        
     def _on_ok(self, _: tk.Event | None = None) -> None:
-        self._filename = self._input_field.get()
+        self._filename = self._input_field.get().strip()
         if self._filename:
             self._stop_rec(self._filename)
         self._dialog_window.destroy()
