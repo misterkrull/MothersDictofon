@@ -15,7 +15,7 @@ import wave
 from pydub import AudioSegment
 from typing import Callable
 
-DIRECTORY = r"G:\codes\projects\_archive"
+DIRECTORY = r"C:\recordings"
 
 CHUNK = 1024  # Запись кусками по 1024 сэмпла
 
@@ -54,7 +54,7 @@ class InputingFilename:
         self._dialog_window.geometry(
             f"{INPUTING_WINDOW_X}x{INPUTING_WINDOW_Y}+{x}+{y}"
         )  # указываем размеры и расположение
-        self._dialog_window.title("Ввести имя аудиозаписи")  # указываем название окна
+        self._dialog_window.title("Записано, введите имя")  # указываем название окна
 
         self._add_widgets()  # добавляем все элементы на наше окно
 
@@ -181,8 +181,10 @@ class GuiInit:
             width=20
         )
         self.startstop_button.pack(pady=30)
+        
+        self.tk_root.bind("<space>", self._start_stop)
 
-    def _start_stop(self) -> None:
+    def _start_stop(self, _: tk.Event | None = None) -> None:
         if not self.app.is_started:         # СТАРТ!
             self.app.is_started = True
             self.startstop_button.config(text="Стоп")
