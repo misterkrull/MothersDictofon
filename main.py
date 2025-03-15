@@ -10,7 +10,7 @@ class MainWindow:
     def __init__(self):
         self.tk_root = tk.Tk()
 
-        self.tk_root.title("Диктофон, нажмите пробел для запуска и остановки")
+        self.tk_root.title("Диктофон: нажмите пробел для запуска и остановки")
         self.tk_root.geometry(f"{MAIN_WINDOW_X}x{MAIN_WINDOW_Y}")
         self.tk_root.resizable(False, False)
         self.tk_root.protocol("WM_DELETE_WINDOW", self._on_closing) 

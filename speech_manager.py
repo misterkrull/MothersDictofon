@@ -14,7 +14,7 @@ class SpeechManager:
             voices = self._speaker.GetVoices()
             self._speaker.Voice = voices[0]
             self._speaker.Rate = 4
-            self._speaker.Volume = 70
+            self._speaker.Volume = 100
         
     def speak(self, text: str):
         if self._speaker:

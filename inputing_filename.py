@@ -28,7 +28,7 @@ class InputingFilename:
         self._dialog_window.geometry(
             f"{INPUTING_WINDOW_X}x{INPUTING_WINDOW_Y}+{x}+{y}"
         )  # указываем размеры и расположение
-        self._dialog_window.title("Записано, введите имя и нажмите энтер, хотите отменить - нажмите эскейп")
+        self._dialog_window.title("Записано: введите имя и нажмите энтер: для отмены нажмите эскейп")
 
         self._add_widgets()  # добавляем все элементы на наше окно
 
